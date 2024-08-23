@@ -75,6 +75,20 @@ namespace WebAPI_1.Controllers.Registration_Data
             return NoContent();
         }
 
+        // GET: api/cities/search/{citiesName}
+        [HttpGet("search/{citiesName}")]
+        public async Task<ActionResult<IEnumerable<Cities>>> GetCountriesByPartialName(string citiesName)
+        {
+            var cities = await _context.Cities.Where(e => e.City.Contains(citiesName)).ToListAsync();
+
+            if (cities == null || !cities.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(cities);
+        }
+
         // DELETE: api/Cities/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCities(int id)

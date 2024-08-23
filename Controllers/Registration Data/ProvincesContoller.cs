@@ -35,6 +35,20 @@ namespace WebAPI_1.Controllers.Registration_Data
             return Provinces;
         }
 
+        // GET: api/Provinces/search/{provincesName}
+        [HttpGet("search/{provincesName}")]
+        public async Task<ActionResult<IEnumerable<Provinces>>> GetCountriesByPartialName(string provincesName)
+        {
+            var provinces = await _context.Provinces.Where(e => e.Province.Contains(provincesName)).ToListAsync();
+
+            if (provinces == null || !provinces.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(provinces);
+        }
+
         // POST: api/Provinces
         [HttpPost]
         public async Task<ActionResult<Provinces>> PostProvinces(Provinces Provinces)

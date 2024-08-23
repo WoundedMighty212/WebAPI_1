@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
 using WebAPI_1.Data;
 using WebAPI_1.Models.RegistrationData;
 namespace WebAPI_1.Controllers.Registration_Data
@@ -33,6 +34,21 @@ namespace WebAPI_1.Controllers.Registration_Data
 
             return Countries;
         }
+
+        // GET: api/Countries/search/{countryName}
+        [HttpGet("search/{countryName}")]
+        public async Task<ActionResult<IEnumerable<Countries>>> GetCountriesByPartialName(string countryName)
+        {
+            var countries = await _context.Countries.Where(e => e.Country.Contains(countryName)).ToListAsync();
+
+            if (countries == null || !countries.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(countries);
+        }
+
 
         // POST: api/Countries
         [HttpPost]
