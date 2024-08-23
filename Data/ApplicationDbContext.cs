@@ -4,6 +4,7 @@
     //using System.Reflection.Emit;
     //using System.Xml;
     using WebAPI_1.Models;
+
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -33,6 +34,12 @@
             modelBuilder.Entity<UserData>()
                 .Property(e => e.id)
                 .ValueGeneratedOnAdd(); // Ensure auto-increment
+            
+            //setup Foreign Key
+            modelBuilder.Entity<UserLoginInfo>()
+           .HasOne(u => u.UserData)
+           .WithOne(ul => ul.UserLoginInfo)
+           .HasForeignKey<UserData>(ul => ul.FKID);
         }
     }
 }
