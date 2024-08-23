@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPI_1.Data;
 using WebAPI_1.Models;
-
 namespace WebAPI_1.Controllers
 {
     public class UserLoginInfoController : Controller
