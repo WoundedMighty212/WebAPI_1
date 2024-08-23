@@ -73,7 +73,19 @@
                .HasOne(c => c.userLoginInfo)
                .WithMany(p => p.Children)
                .HasForeignKey(c => c.FKID)
-               .OnDelete(DeleteBehavior.Cascade); 
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Provinces>()
+              .HasOne(c => c.Countries)
+              .WithMany(p => p.Children)
+              .HasForeignKey(c => c.CountryFKID)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Cities>()
+             .HasOne(c => c.Provinces)
+             .WithMany(p => p.Children)
+             .HasForeignKey(c => c.ProvinceFKID)
+             .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
