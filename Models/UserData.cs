@@ -20,8 +20,5 @@
         public string Race { get; set; }
         public string AccountName { get; set; }
         public int FKID { get; set; }
-
-        // Navigation property
-        public UserLoginInfo UserLoginInfo { get; set; }
     }
 }

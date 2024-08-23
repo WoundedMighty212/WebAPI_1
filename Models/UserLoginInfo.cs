@@ -8,7 +8,5 @@ namespace WebAPI_1.Models
         public string AccountName { get; set; }
         public string EmailAddress { get; set; }
         public byte[] Password { get; set; }
-        // Navigation property
-        public UserData UserData { get; set; }
     }
 }
