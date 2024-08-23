@@ -4,6 +4,7 @@
     //using System.Reflection.Emit;
     //using System.Xml;
     using WebAPI_1.Models;
+    using WebAPI_1.Models.RegistrationData;
 
     public class ApplicationDbContext : DbContext
     {
@@ -12,6 +13,7 @@
         {
             
         }
+        public DbSet<Race> Race { get; set; }
         public DbSet<UserData> UserData { get; set; }
         public DbSet<UserLoginInfo> UserLoginInfo { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,6 +22,13 @@
             modelBuilder.Entity<UserLoginInfo>()
            .Property(e => e.Password)
            .HasColumnType("binary(64)");
+
+            modelBuilder.Entity<Race>()
+            .HasKey(e => e.id); // Set Id as primary key
+
+            modelBuilder.Entity<Race>()
+                .Property(e => e.id)
+                .ValueGeneratedOnAdd(); // Ensure auto-increment
 
             modelBuilder.Entity<UserLoginInfo>()
             .HasKey(e => e.id); // Set Id as primary key
