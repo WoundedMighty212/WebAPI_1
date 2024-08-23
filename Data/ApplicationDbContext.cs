@@ -74,13 +74,13 @@
                .WithMany(p => p.Children)
                .HasForeignKey(c => c.FKID)
                .OnDelete(DeleteBehavior.Cascade);
-
+            //setup Foreign Key
             modelBuilder.Entity<Provinces>()
               .HasOne(c => c.Countries)
               .WithMany(p => p.Children)
               .HasForeignKey(c => c.CountryFKID)
               .OnDelete(DeleteBehavior.Cascade);
-
+            //setup Foreign Key
             modelBuilder.Entity<Cities>()
              .HasOne(c => c.Provinces)
              .WithMany(p => p.Children)
