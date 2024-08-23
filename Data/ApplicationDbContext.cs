@@ -39,7 +39,8 @@
             modelBuilder.Entity<UserData>()
                .HasOne(c => c.userLoginInfo)
                .WithMany(p => p.Children)
-               .HasForeignKey(c => c.FKID);
+               .HasForeignKey(c => c.FKID)
+               .OnDelete(DeleteBehavior.Cascade); 
         }
     }
 }

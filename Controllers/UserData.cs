@@ -42,7 +42,7 @@ namespace WebAPI_1.Controllers
             _context.UserData.Add(userData);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUserData), new { id = userData.id, FKID = userData.FKID}, userData);
+            return CreatedAtAction(nameof(GetUserData), new { id = userData.id}, userData);
         }
 
         // PUT: api/UserData/5
