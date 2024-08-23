@@ -34,12 +34,12 @@
             modelBuilder.Entity<UserData>()
                 .Property(e => e.id)
                 .ValueGeneratedOnAdd(); // Ensure auto-increment
-            
-           // //setup Foreign Key
-           // modelBuilder.Entity<UserLoginInfo>()
-           //.HasOne(u => u.UserData)
-           //.WithOne(ul => ul.UserLoginInfo)
-           //.HasForeignKey<UserData>(ul => ul.FKID);
+
+            //setup Foreign Key
+            modelBuilder.Entity<UserData>()
+               .HasOne(c => c.userLoginInfo)
+               .WithMany(p => p.Children)
+               .HasForeignKey(c => c.FKID);
         }
     }
 }
