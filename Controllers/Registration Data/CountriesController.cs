@@ -8,10 +8,6 @@ namespace WebAPI_1.Controllers.Registration_Data
     [Route("api/[controller]")]
     public class CountriesController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         private readonly ApplicationDbContext _context;
         public CountriesController(ApplicationDbContext context)
         {

@@ -9,11 +9,6 @@ namespace WebAPI_1.Controllers.Registration_Data
     [Route("api/[controller]")]
     public class ProvincesContoller : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         private readonly ApplicationDbContext _context;
         public ProvincesContoller(ApplicationDbContext context)
         {
