@@ -4,6 +4,8 @@ using WebAPI_1.Data;
 using WebAPI_1.Models;
 namespace WebAPI_1.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class UserLoginInfoController : Controller
     {
         private readonly ApplicationDbContext _context;

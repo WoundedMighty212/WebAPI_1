@@ -13,6 +13,7 @@ namespace WebAPI_1.Controllers
         {
             _context = context;
         }
+
         // GET: api/UserData
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserData>>> GetUserData()
@@ -41,7 +42,7 @@ namespace WebAPI_1.Controllers
             _context.UserData.Add(userData);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUserData), new { id = userData.id }, userData);
+            return CreatedAtAction(nameof(GetUserData), new { id = userData.id, FKID = userData.FKID}, userData);
         }
 
         // PUT: api/UserData/5
